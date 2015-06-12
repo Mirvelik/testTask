@@ -20,6 +20,12 @@
         <p>
             <a href="/signup" th:href="@{/signup}" class="btn btn-success btn-lg">Sign up</a>
         </p>
+        <!-- VKONTAKTE SIGNIN -->
+        <form name="vk_signin" id="vk_signin" th:action="@{/auth/vkontakte}" method="POST">
+            <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
+            <input type="hidden" name="scope" value="notify,email,friends,photos,offline" />
+            <button type="submit" class="btn btn-primary">Зарегистрироваться через VK</button>
+        </form>
     </div>
     <div th:replace="fragments/footer :: footer">&copy; 2013 The Static Templates</div>
 </div>

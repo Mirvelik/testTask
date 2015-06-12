@@ -3,6 +3,7 @@ package my.groupid.signup;
 import org.hibernate.validator.constraints.*;
 
 import my.groupid.account.Account;
+import org.springframework.social.connect.UserProfile;
 
 public class SignupForm {
 
@@ -34,5 +35,13 @@ public class SignupForm {
 
 	public Account createAccount() {
         return new Account(getEmail(), getPassword(), "ROLE_USER");
+	}
+
+	public static SignupForm fromProviderUser(UserProfile providerUser) {
+		SignupForm form = new SignupForm();
+//		form.setEmail(providerUser.getEmail()+" " + providerUser.getFirstName()+ " " + providerUser.getLastName());
+		form.setEmail(providerUser.getFirstName()+ "." + providerUser.getLastName() + "@vk.com");
+
+		return form;
 	}
 }
